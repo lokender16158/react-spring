@@ -5,6 +5,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Link,
   } from "react-router-dom";
 import AppForm from './AppForm';
 
@@ -19,7 +20,7 @@ const AppsAdmin = () => {
                 {/* A <Switch> looks through its children <Route>s and
                     renders the first one that matches the current URL. */}
                 <Switch>
-                <Route path="/addApp/:appId">
+                <Route path="/addApp/:appId" >
                     <div className="col-md-8 offset-2">
                         <AppForm />
                     </div>  
@@ -27,7 +28,7 @@ const AppsAdmin = () => {
                 <Route path="/">
                 <div className="col-md-8 offset-2">
                     <div className="col-md-2">
-                            <Button variant="primary" href="/addApp/0" >Add Application</Button>
+                            <Link to="/addApp/0"><Button variant="primary" >Add Application</Button></Link>
                     </div>
                     <br/>
                     <AppsPreview />

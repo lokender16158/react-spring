@@ -108,7 +108,7 @@ const AppsPreview = ({ myApps = [], isLoading, startLoadingTodos }) => {
                 className="d-inline-block align-top"
                 /></td>
                  <td>
-                     <Button variant="link" href = {"/addApp/"+app.appId} > <Pencil /></Button>
+                     <Link to={"/addApp/"+app.appId}><Pencil /></Link>
                      <Button variant="link" onClick = {() => deleteApp(app.appId) } > <Trash /></Button>
                 </td>
 
