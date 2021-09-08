@@ -1,0 +1,2 @@
+1. execute 'npm run build' inside frontend folder.
+2. start tomcat using mvn spring-boot:run
