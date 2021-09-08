@@ -87,7 +87,7 @@ public class MyApplicationServiceImpl implements MyApplicationService {
             String fileName = fileStorageService.storeFile(file);
 
             fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/downloadFile/")
+                    .path("/api/downloadFile/")
                     .path(fileName)
                     .toUriString();
         } else {

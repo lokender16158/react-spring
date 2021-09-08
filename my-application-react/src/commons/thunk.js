@@ -1,9 +1,10 @@
 import {loadAppsInProgress, loadAppssSuccess, loadAppsFailure} from './actions'
+import { getAllApisUri } from './apis';
 
 export const loadApps = () => async (dispatch, getState) => {
     try {
         dispatch(loadAppsInProgress());
-        const response = await fetch('http://localhost:8080/getApps');
+        const response = await fetch(getAllApisUri());
         const apps = await response.json();
         setTimeout(() => {
             dispatch(loadAppssSuccess(apps));

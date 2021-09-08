@@ -4,10 +4,11 @@ import {
   useParams,
   Redirect
 } from "react-router-dom";
+import { getAddAppUri, getSingleAppUri, getUpdateAppUri } from '../commons/apis';
 
 export const loadApp = async (appId, setForm) => {
   try {
-      const response = await fetch('http://localhost:8080/getApp?='+appId);
+      const response = await fetch(getSingleAppUri(appId));
       const app = await response.json();
       setForm(app);
 
@@ -33,10 +34,10 @@ export const addAppRequest = async (form,file,uploadFinised) => {
           console.log(data);
           //const response = await fetch('http://localhost:8080/updateApp?appId='+form.appId);
 
-          url = 'http://localhost:8080/updateApp?appId='+form.appId;
+          url = getUpdateAppUri(form.appId);
           
       }else {
-        url = 'http://localhost:8080/addApp';     
+        url = getAddAppUri();     
       }     
       const response = await fetch(url,{
         method: 'post',
@@ -70,8 +71,9 @@ const  AppForm = () => {
        //loadApp(appId,setForm);
         useEffect(() => {
           if(appId > 0)
-          fetch('http://localhost:8080/getApp?appId='+appId)
+          fetch(getSingleAppUri(appId))
           .then(response => response.json())
+          .then(data => data[0])
           .then(data => {console.log(data);setForm(data)});
         },[appId])
 

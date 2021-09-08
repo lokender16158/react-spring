@@ -7,6 +7,7 @@ import {
     Link,
   } from "react-router-dom";
 import {getApps,getIsLoading} from '../commons/selectors.js'
+import { getDeleteAppUri } from '../commons/apis';
 
 
 
@@ -14,7 +15,7 @@ import {getApps,getIsLoading} from '../commons/selectors.js'
   export const deleteAppRequest = async (appId, deleteFinished) => {
     try {
        
-        let url = 'http://localhost:8080/deleteApp?appId='+appId;        
+        let url = getDeleteAppUri(appId);        
   
         
         const response = await fetch(url);
